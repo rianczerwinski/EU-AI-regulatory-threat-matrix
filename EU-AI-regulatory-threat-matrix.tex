@@ -27,11 +27,14 @@
 \titleformat{\paragraph}[runin]{\bfseries}{}{0em}{}[.]
 
 % ── Metadata ──────────────────────────────────────────────────────────────
-\title{EU AI Regulatory Compliance Threat Matrix:\\
+\title{EU AI Compliance Threat Matrix:\\
 A Systematic Classification of Regulatory Threats\\to AI Stakeholders}
 
-\author{
-  Wiktoria Leks \and Rían Czerwiński
+\author{%
+  \begin{tabular}{c@{\hspace{3em}}c}
+    Wiktoria Leks & Rían Czerwiński \\
+    \texttt{wiktoriazleks@gmail.com} & \texttt{i@rian.is}
+  \end{tabular}%
 }
 
 \date{February 2026}
@@ -42,7 +45,7 @@ A Systematic Classification of Regulatory Threats\\to AI Stakeholders}
 
 % ── Abstract ──────────────────────────────────────────────────────────────
 \begin{abstract}
-This paper presents a systematic threat matrix mapping the regulatory exposure of artificial intelligence stakeholders operating within the European Union. Covering 19 EU-level regulations and national implementations across 27 Member States, the analysis classifies regulatory threats for five AI stakeholder categories: frontier laboratories, platforms, hardware manufacturers, open-source projects, and research organizations. For each category, the matrix enumerates specific threats, their regulatory sources, trigger conditions, penalty exposure, mitigation complexity, temporal activation schedules, and cross-regulation compounding interactions. Cross-cutting analyses address data governance, compute thresholds, liability frameworks, transparency obligations, verification requirements, and export controls. Geographic threat modifiers are characterized through a three-tier taxonomy of Data Protection Authority enforcement patterns, with detailed profiles for eight high-leverage jurisdictions and summary coverage of the remaining nineteen. The matrix employs an epistemic framework distinguishing verified regulatory facts (KNOW), industry-benchmark estimates (GUESS), and unresolved interpretive gaps (UNKNOWN). The work is intended as a practical compliance-planning resource for AI organizations navigating the EU regulatory landscape during the 2025--2027 enforcement escalation period.
+Artificial Intelligence (AI) safety considerations require systematic threat mapping of the regulatory exposures for AI stakeholders, operating within the European Union. Covering 19 EU-level regulations and national implementations across 27 Member States, the analysis classifies regulatory threats for five AI stakeholder categories: frontier laboratories, platforms, hardware manufacturers, open-source projects, and research organizations. For each category, the matrix enumerates specific threats, their regulatory sources, trigger conditions, penalty exposure, mitigation complexity, temporal activation schedules, and cross-regulation compounding interactions. Cross-cutting analyses address data governance, compute thresholds, liability frameworks, transparency obligations, verification requirements, and export controls. Geographic threat modifiers are characterized through a three tier taxonomy of Data Protection Authority enforcement patterns, with detailed profiles for eight high leverage jurisdictions and summary coverage of the remaining nineteen. The threat matrix employs an epistemic framework, distinguishing verified regulatory facts (KNOW), industry-benchmark estimates (GUESS) and unresolved interpretive gaps (UNKNOWN). The work is intended as a practical compliance planning resource for AI organizations, navigating the EU regulatory landscape during the 2025--2027 enforcement escalation period.
 \end{abstract}
 
 % ── Table of Contents ─────────────────────────────────────────────────────
@@ -55,23 +58,23 @@ This paper presents a systematic threat matrix mapping the regulatory exposure o
 \section{Introduction: Adversarial Systems in Legal Harmony}
 \label{sec:introduction}
 
-The European Union is constructing the most comprehensive regulatory framework for artificial intelligence in the world. Between 2024 and 2027, at least 19 EU-level regulations with direct AI implications enter active enforcement, interact with 27 national legal systems, and impose obligations on organizations that may not yet recognize themselves as regulated entities. The resulting compliance landscape is not merely complex---it is adversarial in a structural sense: AI capabilities advance faster than regulatory interpretation stabilizes, creating a moving target for organizations seeking lawful operation. This paper presents a systematic threat matrix for navigating that landscape.
+The European Union is constructing the most comprehensive regulatory framework for artificial intelligence in the world. Between 2024 and 2027, at least 19 EU level regulations with direct AI implications enter active enforcement, interact with 27 national legal systems, and impose obligations on organizations that may not yet recognize themselves as regulated entities. The resulting compliance landscape is not merely complex, it is adversarial in a structural sense: AI capabilities advance faster than regulatory interpretation stabilizes, creating a moving target for organizations seeking lawful operation. This paper presents a systematic threat matrix for navigating that landscape.
 
 \subsection{The Adversarial Surface}
 
-Advanced AI systems can be understood as evolving threat actors---not in the sense of malicious intent, but through structural misalignment with legal baselines. Capability advancement, deployment pressure, and competitive dynamics produce emergent adversariality that conflicts with legal constraints designed for an earlier technological regime \cite{bostrom2014}. The mismatch is bidirectional: AI systems violate assumptions embedded in existing law (e.g., that ``products'' are static artifacts, that ``decisions'' have identifiable human authors), while regulations impose constraints that presuppose capabilities not yet standardized (e.g., watermarking robustness, training data provenance).
+Advanced AI systems can be understood as evolving threat actors, not in the sense of malicious intent, but through structural misalignment with legal baselines. Capability advancement, deployment pressure, and competitive dynamics produce emergent adversariality that conflicts with legal constraints designed for an earlier technological regime \cite{bostrom2014}. The mismatch is bidirectional: AI systems violate assumptions embedded in existing law (e.g., that ``products'' are static artifacts, that ``decisions'' have identifiable human authors), while regulations impose constraints that presuppose capabilities not yet standardized (e.g., watermarking robustness, training data provenance).
 
-The EU regulatory response is distinctive in its breadth. Rather than a single AI-specific instrument, the framework comprises overlapping horizontal regulations---data protection, product safety, cybersecurity, market regulation, copyright, and AI-specific governance---that interact in ways neither regulators nor regulated entities fully anticipate. A single AI training run can simultaneously trigger obligations under GDPR (personal data in training corpus), the Copyright Directive (commercial text and data mining), and the AI Act (systemic risk assessment for models exceeding $10^{25}$ FLOP). This cross-regulation compounding is a defining characteristic of the EU approach and a primary source of compliance risk.
+The EU regulatory response is distinctive in its breadth. Rather than a single AI specific instrument, the framework comprises overlapping horizontal regulations: data protection, product safety, cybersecurity, market regulation, copyright, and AI specific governance, that interact in ways neither regulators nor regulated entities fully anticipate. A single AI training run can simultaneously trigger obligations under GDPR (personal data in training corpus), the Copyright Directive (commercial text and data mining), and the AI Act (systemic risk assessment for models exceeding $10^{25}$ FLOP). This cross-regulation compounding is a defining characteristic of the EU approach and a primary source of compliance risk.
 
 \subsection{Legal Constraint as Coordination Mechanism}
 
 Regulations function as society's coordination tools for protecting values while enabling innovation. The EU regulatory framework represents collective societal constraints on AI development trajectories. These constraints are neither arbitrary nor static; they reflect negotiated compromises among innovation imperatives, fundamental rights protections, and market regulation objectives \cite{jobin2019}.
 
-The coordination function is visible in the framework's structure: GDPR establishes baseline data processing norms, the AI Act layers risk-proportionate obligations on top, the DSA governs platform-mediated harms, and product safety regulations extend strict liability to software. Each instrument addresses a distinct failure mode---privacy violation, discriminatory automation, content amplification, defective products---while the ensemble constrains the overall threat surface of AI deployment. The challenge for regulated entities is that compliance with any single regulation does not guarantee compliance with the ensemble; interactions between instruments create emergent obligations that no individual regulation explicitly states.
+The coordination function is visible in the framework's structure: GDPR establishes baseline data processing norms, the AI Act layers risk-proportionate obligations on top, the DSA governs platform-mediated harms, and product safety regulations extend strict liability to software. Each instrument addresses a distinct failure mode: privacy violation, discriminatory automation, content amplification, defective products, while the ensemble constrains the overall threat surface of AI deployment. The challenge for regulated entities is that compliance with any single regulation does not guarantee compliance with the ensemble; interactions between instruments create emergent obligations that no individual regulation explicitly states.
 
 \subsection{Why Threat Modeling Matters}
 
-Accurate regulatory threat models prevent catastrophic legal failures and enable conscientious development. The alternative---reactive legal collision---entails post-harm penalties, business model disruption, and forced redesign under time pressure. The EU enforcement landscape is entering an acceleration phase: GDPR fines exceeded EUR~4.5B cumulatively by 2026, the AI Act's phased rollout creates successive compliance deadlines through 2027, and DPA technical capacity is growing across Member States.
+Accurate regulatory threat models prevent catastrophic legal failures and enable conscientious development. The alternative, reactive legal collision, entails post harm penalties, business model disruption, and forced redesign under time pressure. The EU enforcement landscape is entering an acceleration phase: GDPR fines exceeded EUR~4.5B cumulatively by 2026, the AI Act's phased rollout creates successive compliance deadlines through 2027, and DPA technical capacity is growing across Member States.
 
 Proactive threat modeling enables three outcomes that reactive compliance cannot: identification of cross-regulation compounding before enforcement actions crystallize, temporal planning aligned with phased regulatory activation, and resource allocation proportionate to actual (rather than perceived) risk severity. This paper provides the analytical foundation for such modeling across five stakeholder categories.
 
@@ -79,7 +82,7 @@ Proactive threat modeling enables three outcomes that reactive compliance cannot
 
 This paper provides a systematic classification of EU regulatory threats to AI stakeholders across five actor categories, 19 EU-level regulations, and 27 jurisdictions. The analysis covers the enforcement period 2025--2027, during which the EU AI Act enters phased application, GDPR enforcement matures, and cybersecurity mandates (NIS2, Cyber Resilience Act) become operational.
 
-The contribution is threefold. First, the threat matrix enumerates specific regulatory threats per stakeholder category with trigger conditions, penalty exposure, and mitigation complexity. Second, cross-cutting analyses identify compounding interactions between regulations that amplify individual threat severity. Third, geographic threat modifiers characterize national enforcement patterns through a three-tier DPA taxonomy, enabling jurisdiction-specific risk assessment. The epistemic framework explicitly distinguishes verified regulatory facts from industry-benchmark estimates and unresolved interpretive gaps.
+The contribution is threefold. First, the threat matrix enumerates specific regulatory threats per stakeholder category with trigger conditions, penalty exposure, and mitigation complexity. Second, cross-cutting analyses identify compounding interactions between regulations that amplify individual threat severity. Third, geographic threat modifiers characterize national enforcement patterns through a three tier DPA taxonomy, enabling jurisdiction specific risk assessment. The epistemic framework explicitly distinguishes verified regulatory facts from industry benchmark estimates and unresolved interpretive gaps.
 
 
 % ══════════════════════════════════════════════════════════════════════════
@@ -96,7 +99,7 @@ Regulatory analysis of AI governance has expanded rapidly since the publication 
 
 \paragraph{Compliance Cost Estimation.} Industry surveys have estimated GDPR compliance costs at EUR~1--10M for large organizations \cite{iapp2023}, but equivalent estimates for the AI Act are nascent and typically based on analogical reasoning from other regulatory domains rather than direct measurement. This paper's cost estimates are explicitly labeled as industry benchmarks (GUESS category) rather than verified figures.
 
-\paragraph{Threat Modeling in Regulatory Contexts.} The application of threat modeling methodologies---originating in cybersecurity \cite{shostack2014}---to regulatory compliance is relatively novel. Existing approaches tend to analyze individual regulations in isolation. This paper's contribution is the systematic enumeration of cross-regulation compounding interactions, which has no direct precedent in the literature for the EU AI regulatory ensemble.
+\paragraph{Threat Modeling in Regulatory Contexts.} The application of threat modeling methodologies, originating in cybersecurity \cite{shostack2014} to regulatory compliance is relatively novel. Existing approaches tend to analyze individual regulations in isolation. This paper's contribution is the systematic enumeration of cross-regulation compounding interactions.
 
 \paragraph{Positioning.} This work differs from prior regulatory analyses in three respects: (1)~it covers the full ensemble of 19 EU-level regulations rather than individual instruments, (2)~it maps threats per stakeholder category rather than per regulation, and (3)~it employs an explicit epistemic framework distinguishing verified facts from estimates and unknowns.
 
@@ -144,7 +147,7 @@ The EU regulatory landscape for AI is entering an active enforcement phase with 
 
 \paragraph{Cross-Border Coordination} The EDPB is harmonizing GDPR interpretation, the EU AI Office is coordinating AI Act enforcement, and the One-Stop-Shop mechanism is reducing jurisdiction arbitrage.
 
-\subsubsection{Innovation--Precaution Tension}
+\subsubsection{Innovation Precaution Tension}
 
 The EU regulatory framework embodies an unresolved tension between innovation promotion and precautionary constraint. The AI Act's risk-based approach attempts to resolve this by imposing minimal obligations on low-risk systems while concentrating requirements on high-risk and systemic-risk categories. In practice, the boundary between categories is contested: recommender systems, general-purpose chatbots, and AI-assisted coding tools occupy ambiguous positions that different DPAs may classify differently. This classification uncertainty itself constitutes a regulatory threat, as organizations cannot reliably predict their obligation tier until enforcement precedent stabilizes.
 
@@ -158,7 +161,7 @@ Four structural consequences of the current regulatory trajectory merit attentio
 
 \subsection{Systematic Regulation Overview}
 
-\subsubsection{EU-Level Regulations}
+\subsubsection{EU Level Regulations}
 
 Table~\ref{tab:regulations} provides an overview of the 19 EU-level regulations included in this analysis.
 
@@ -207,7 +210,7 @@ The General Data Protection Regulation establishes core obligations for AI syste
 The first comprehensive AI regulation globally, the EU AI Act introduces a risk-based classification framework: prohibited practices (Article~5) including social scoring, subliminal manipulation, and real-time biometric identification in public spaces; high-risk AI system requirements (Articles~8--15) for risk management, data governance, documentation, transparency, human oversight, and accuracy; GPAI obligations (Articles~51--56) for technical documentation, copyright transparency, and---for models exceeding the $10^{25}$ FLOP threshold---systemic risk assessment, model evaluation, incident reporting, and cybersecurity protections. Penalties scale with severity: EUR~35M or 7\% of revenue for prohibited practices, EUR~15M or 3\% for high-risk violations, EUR~7.5M or 1.5\% for documentation failures. Phased application runs from 2~February~2025 (prohibited practices) through 2~August~2027 (full application) \cite{aiact}.
 
 \paragraph{DSA (2022/2065).}
-The Digital Services Act imposes notice-and-action mechanisms for illegal content (Articles~14--16), content moderation transparency (Article~15), and enhanced obligations for Very Large Online Platforms (VLOPs) exceeding 45 million EU users---including systemic risk assessment, independent audits, crisis response mechanisms, and recommender system transparency (Articles~33--37). Dark patterns in interface design are prohibited (Article~25). Maximum penalties reach EUR~20M or 6\% of global revenue \cite{dsa}.
+The Digital Services Act imposes notice-and-action mechanisms for illegal content (Articles~14--16), content moderation transparency (Article~15), and enhanced obligations for Very Large Online Platforms (VLOPs) exceeding 45 million EU users, including systemic risk assessment, independent audits, crisis response mechanisms, and recommender system transparency (Articles~33--37). Dark patterns in interface design are prohibited (Article~25). Maximum penalties reach EUR~20M or 6\% of global revenue \cite{dsa}.
 
 \paragraph{NIS2 Directive (2022/2555).}
 Cybersecurity requirements for essential and important entities, including cloud providers and large platforms. Mandates incident reporting within 24~hours (early warning) and 72~hours (detailed notification), supply chain security assessment, and vulnerability management. Penalties for essential entities reach EUR~10M or 2\% of revenue, with personal liability for management in certain Member States.
